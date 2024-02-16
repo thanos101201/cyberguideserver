@@ -1,12 +1,12 @@
-const userModel = require('../../models/user');
+const locationModel = require('../../models/location');
 
-const deleteUser = async (username) => {
-    return await userModel.deleteOne({
-        username: username
+const getLocation = async(coOrdinates) => {
+    return await locationModel.find({
+        coOrdinates: coOrdinates
     }).then((resp1) => {
         let data = {
             type: 'data',
-            message: 'User deleted'
+            message : resp1[0]
         }
         return data;
     }).catch((er1) => {
@@ -15,7 +15,7 @@ const deleteUser = async (username) => {
             message: er1.message
         }
         return error;
-    })
+    });
 }
 
-module.exports = deleteUser;
+module.exports = getLocation;

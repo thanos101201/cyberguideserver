@@ -1,7 +1,7 @@
 const userModel = require('../../models/user');
 
-const get = (username) => {
-    userModel.find({
+const get = async(username) => {
+    return await userModel.find({
         username: username
     }).then((resp1) => {
         if(resp1.length === 0){

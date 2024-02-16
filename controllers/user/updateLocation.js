@@ -1,7 +1,7 @@
 const userModel = require("../../models/user");
 
-const updateLocation = ( username, location) => {
-    userModel.updateOne({
+const updateLocation = async ( username, location) => {
+    return await userModel.updateOne({
         username: username
     }, {
         currentLocation: location

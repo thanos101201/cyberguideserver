@@ -1,16 +1,18 @@
 const userModel = require('../../models/user');
 
-const post = (name, username, password) => {
+const post = async (name, username, password) => {
     let userm = new userModel();
     userm.name = name;
     userm.password = password;
     userm.username = username;
 
-    userm.save().then((resp1) => {
+    return await userm.save().then((resp1) => {
+        console.log('User added');
         let data = {
             type: 'data',
             message: 'User added'
         }
+        // console.log(data);
         return data;
     }).catch((er) => {
         let error = {

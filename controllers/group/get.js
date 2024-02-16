@@ -1,7 +1,7 @@
 const groupModel = require('../../models/group');
 
-const get = (groupName) => {
-    groupModel.find({
+const get = async (groupName) => {
+    return await groupModel.find({
         groupName: groupName
     }).then((resp1) => {
         if(resp1.length === 0){

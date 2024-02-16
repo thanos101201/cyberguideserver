@@ -1,11 +1,11 @@
 const groupModel = require('../../models/group');
 
-const post = (username, gropupName) => {
+const post = async (username, gropupName) => {
     let groupm = new groupModel();
     groupm.name = gropupName;
     groupm.userArray = [ username ];
 
-    groupm.save().then((resp1) => {
+    return await groupm.save().then((resp1) => {
         let data = {
             type: 'data',
             message: 'Group added'

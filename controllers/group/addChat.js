@@ -1,7 +1,7 @@
 const groupModel = require("../../models/group")
 
-const addChat = (chat, groupName) => {
-    groupModel.find({
+const addChat = async (chat, groupName) => {
+    return await groupModel.find({
         name: groupName
     }).then((resp1) => {
         if(resp1.length === 0){
@@ -63,3 +63,5 @@ const addChat = (chat, groupName) => {
         return error;
     })
 }
+
+module.exports = addChat;
